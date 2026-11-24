@@ -67,6 +67,8 @@ def validate(excuse):
     excuse.encode("utf-8")
     if not excuse.strip():
         raise ValueError("excuse must not be only white space")
+    if excuse != excuse.strip():
+        raise ValueError("excuse must not have leading or trailing white space")
     if "\n" in excuse or "\r" in excuse:
         raise ValueError("excuse must be a single line")
     if len(excuse) > MAX_CHARS:
